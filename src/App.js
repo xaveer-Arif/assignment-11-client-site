@@ -4,6 +4,8 @@ import './App.css';
 import AddService from './Pages/AddService/AddService';
 import Home from './Pages/Home/Home/Home';
 import MenuBar from './Pages/Home/MenuBar/MenuBar';
+import ManageOrder from './Pages/ManageOrders/ManageOrder';
+import MyOrders from './Pages/MyOrders/MyOrders';
 import Register from './Pages/Register/Register';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 
@@ -27,6 +29,12 @@ function App() {
             </Route>
             <Route path = '/register'>
               <Register></Register>
+            </Route>
+            <Route path = '/myorders'>
+              <MyOrders></MyOrders>
+            </Route>
+            <Route path = '/manageOrders'>
+              <ManageOrder></ManageOrder>
             </Route>
           </Switch>
         </Router>

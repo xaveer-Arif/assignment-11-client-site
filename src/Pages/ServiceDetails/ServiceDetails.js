@@ -25,16 +25,19 @@ const ServiceDetails = () => {
         })
     },[])
     // form submition
-    const onSubmit = data =>{ 
-        const email = register.current.value;
-               console.log(email)
+    const formHandler = data =>{ 
+        data.preventDefault()
+        const email = emailRef.current.value;
+        const newUser = {email}
+            //    console.log(newUser)
+            //    console.log(data)
        
         fetch(`http://localhost:5000/update/${services._id}`, {
             method : "PUT", 
             headers:{
                 "content-type": "application/json"
             }, 
-            body:JSON.stringify(data)
+            body:JSON.stringify(newUser)
         })
         .then(res => res.json())
         .then(data => console.log(data))
@@ -54,28 +57,42 @@ const ServiceDetails = () => {
         <div>
             <h1>product {services.name}</h1>
         {/* ..............form............... */}
-        <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit = {formHandler}>
+       {/*  <input  className = 'm-1' defaultValue= {services.name} placeholder = 'Service Name'/>
+        <br /> */}
+
+       {/*  <input  className = 'm-1' defaultValue= {user?.displayName} />
+        <br /> */}
+
+        <input  ref = {emailRef}  className = 'm-1' defaultValue= {user?.email}/>
+        <br />
+
+                {/*   <input className = 'm-1' required placeholder = 'address'/>
+                  <br /> */}
+                    {/* {errors.exampleRequired && <span>This field is required</span>} */}
+                    <br />
+                <input className = 'm-2' type="submit" />
+        </form>
+       {/*  <form onSubmit={handleSubmit(onSubmit)}>
 
                  <input  className = 'm-1' {...register("name" , { required: false})} defaultValue= {services.name} placeholder = 'Service Name'/>
                  <br />
 
                  <input  className = 'm-1' {...register("userName" , {required: false })} defaultValue= {user?.displayName} />
                  <br />
-                 {/* <input  ref = {emailRef}  className = 'm-1' defaultValue= {user?.email} />
-                 <br /> */}
-                 <input  ref = {register}  className = 'm-1'  defaultValue= {user.email} />
+                 <input  ref = {emailRef}  className = 'm-1' defaultValue= {user?.email} />
                  <br />
-             {/*     <input  ref = {register}  className = 'm-1' {...register("email" , {required: false })} defaultValue= {user?.email} />
-                 <br /> */}
+                 <input  ref = {register}  className = 'm-1' {...register("email" , {required: false })} defaultValue= {user?.email} />
+                 <br />
+                 <input  ref = {register}  className = 'm-1' {...register("email" , {required: false })} defaultValue= {user?.email} />
+                 <br />
 
                   <input className = 'm-1' {...register("address", { required: true })} placeholder = 'address'/>
                   <br />
-
-                 {/*  <input className = 'm-1' {...register("img", { required: true })} placeholder = 'img url'/> */}
                     {errors.exampleRequired && <span>This field is required</span>}
                     <br />
                 <input className = 'm-2' type="submit" />
-    </form>
+    </form> */}
   
         </div>
     );

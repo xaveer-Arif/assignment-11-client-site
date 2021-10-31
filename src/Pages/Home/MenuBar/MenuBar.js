@@ -18,7 +18,8 @@ const MenuBar = () => {
       <Nav.Link as = {Link} to ="/home">Home</Nav.Link>
       <Nav.Link as = {Link} to="/addService">Add Service</Nav.Link>
       <Nav.Link as = {Link} to="/register">Register</Nav.Link>
-      <Nav.Link as = {Link} to="#pricing">Pricing</Nav.Link>
+      <Nav.Link as = {Link} to="/myorders">My Orders</Nav.Link>
+      <Nav.Link as = {Link} to="/manageOrders">Manage Orders</Nav.Link>
       {
         user.email?<Nav.Link as = {Link} onClick = {logOut} to="/logout">Log Out</Nav.Link>: <Nav.Link as = {Link} to="/login">Log In</Nav.Link>
       }
