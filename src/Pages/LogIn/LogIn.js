@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 const LogIn = () => {
@@ -34,7 +35,9 @@ const LogIn = () => {
                 <br />
                 <br />
             </form>
-            <button onClick = {() => handlerSingIn()} className = 'bg-warning mb-5'>Google Sign In</button>
+            <button onClick = {() => handlerSingIn()} className = 'bg-warning mb-5 fw-bold'>Google Sign In</button>
+            <p>New User? <Link to = "register" >Click Here
+            </Link></p>
         </div>
     );
 };

@@ -9,6 +9,7 @@ import MenuBar from './Pages/Home/MenuBar/MenuBar';
 import LogIn from './Pages/LogIn/LogIn';
 import ManageOrder from './Pages/ManageOrders/ManageOrder';
 import MyOrders from './Pages/MyOrders/MyOrders';
+import NotFound from './Pages/NotFound/NotFound';
 import PrivateRoute from './Pages/PrivateRouter/PrivateRoute';
 import Register from './Pages/Register/Register';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
@@ -33,9 +34,9 @@ function App() {
             <PrivateRoute path = '/details/:id'>
                 <ServiceDetails></ServiceDetails>
             </PrivateRoute>
-          {/*   <Route path = '/register'>
+            <Route path = '/register'>
               <Register></Register>
-            </Route> */}
+            </Route>
           {  <Route path = '/login'>
               <LogIn></LogIn>
             </Route>}
@@ -45,7 +46,9 @@ function App() {
             <PrivateRoute path = '/manageOrders'>
               <ManageOrder></ManageOrder>
             </PrivateRoute>
-            
+            <Route path = '*'>
+              <NotFound></NotFound>
+            </Route>
           </Switch>
               <Footer></Footer>
         </Router>

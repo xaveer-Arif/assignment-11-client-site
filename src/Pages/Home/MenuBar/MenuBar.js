@@ -10,16 +10,24 @@ const MenuBar = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     
-    <Navbar.Brand>MyTraval</Navbar.Brand>
+    <Navbar.Brand className = 'ms-5'>MyTraval</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
 
     <Nav className="ms-auto">
       <Nav.Link as = {Link} to ="/home">Home</Nav.Link>
-      <Nav.Link as = {Link} to="/addService">Add Service</Nav.Link>
+      {
+        user.email && <Nav.Link as = {Link} to="/addService">Add Service</Nav.Link>
+      }
       
-      <Nav.Link as = {Link} to="/myorders">My Orders</Nav.Link>
-      <Nav.Link as = {Link} to="/manageOrders">Manage Orders</Nav.Link>
+      {
+        user.email &&<Nav.Link as = {Link} to="/myorders">My Orders</Nav.Link>
+
+      }
+      {
+        user.email && <Nav.Link as = {Link} to="/manageOrders">Manage Orders</Nav.Link>
+      }
+      
       {
         user.email?<Nav.Link as = {Link} onClick = {logOut} to="/logout">Log Out</Nav.Link>: <Nav.Link as = {Link} to="/login">Log In</Nav.Link>
       }
