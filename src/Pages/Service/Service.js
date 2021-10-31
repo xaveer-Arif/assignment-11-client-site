@@ -3,7 +3,7 @@ import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Service = ({service}) => {
-    const {_id, name, img, } = service;
+    const {_id, name, img, discription, price } = service;
 
     return (
         <div>
@@ -11,11 +11,13 @@ const Service = ({service}) => {
     <Col>
       <Card>
         <Card.Img variant="top" src={img} />
-        <Card.Body>
+        <Card.Body className = 'bg-danger text-white'>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
+          {discription}
+          </Card.Text>
+          <Card.Text>
+          price : {price}
           </Card.Text>
           <Link to = {`/details/${_id}`}> 
           <button>buy now </button>

@@ -22,6 +22,8 @@ const AddService = () => {
                   <input className = 'm-1' {...register("discription", { required: true })} placeholder = 'Service info'/>
                   <br />
                   <input className = 'm-1' {...register("img", { required: true })} placeholder = 'img url'/>
+                  <br />
+                  <input type = "number" className = 'm-1' {...register("price", { required: true })} placeholder = 'price'/>
                     {errors.exampleRequired && <span>This field is required</span>}
                     <br />
                 <input className = 'm-2' type="submit" />

@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AddService from './Pages/AddService/AddService';
+import Footer from './Pages/Home/Footer/Footer';
 import Home from './Pages/Home/Home/Home';
 import MenuBar from './Pages/Home/MenuBar/MenuBar';
 import ManageOrder from './Pages/ManageOrders/ManageOrder';
@@ -16,6 +17,9 @@ function App() {
         <MenuBar></MenuBar>
           <Switch>
             <Route exact path = '/'>
+                <Home></Home>
+              </Route>
+            <Route path = '/home'>
                 <Home></Home>
               </Route>
             <Route path = '/home'>
@@ -36,7 +40,9 @@ function App() {
             <Route path = '/manageOrders'>
               <ManageOrder></ManageOrder>
             </Route>
+            
           </Switch>
+              <Footer></Footer>
         </Router>
     </div>
   );
