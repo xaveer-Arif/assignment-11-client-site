@@ -6,15 +6,15 @@ initAuthentication()
 const useFIrebase = () => {
     const [user, setUser] = useState({})
     const auth = getAuth()
+    const [isLoading, setIsloading] = useState([])
 
     const googleSignIn = () => {
+        setIsloading(true)
         const googleProvider = new GoogleAuthProvider();
-        signInWithPopup(auth , googleProvider)
-        .then(result => {
-            const user = result.user;
-            setUser(user)
-            console.log(user)
-        })
+
+       return signInWithPopup(auth , googleProvider)
+       .finally(() => setIsloading(false))
+       
     }
     // On Auth Change
     useEffect( () => {
@@ -22,21 +22,26 @@ const useFIrebase = () => {
             if(user){
                     setUser(user)
             }
+            setIsloading(false)
         })
     },[])
     // log out
     const logOut = () => {
+        setIsloading(true)
         signOut(auth)
         .then(() => {
             setUser({})
         })
+        .finally(() => setIsloading(false))
 
     }
 
     return {
         googleSignIn,
         user,
-        logOut
+        setUser,
+        logOut,
+        isLoading
     };
 };
 

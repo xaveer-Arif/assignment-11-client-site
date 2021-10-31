@@ -6,8 +6,10 @@ import AddService from './Pages/AddService/AddService';
 import Footer from './Pages/Home/Footer/Footer';
 import Home from './Pages/Home/Home/Home';
 import MenuBar from './Pages/Home/MenuBar/MenuBar';
+import LogIn from './Pages/LogIn/LogIn';
 import ManageOrder from './Pages/ManageOrders/ManageOrder';
 import MyOrders from './Pages/MyOrders/MyOrders';
+import PrivateRoute from './Pages/PrivateRouter/PrivateRoute';
 import Register from './Pages/Register/Register';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 
@@ -24,24 +26,25 @@ function App() {
             <Route path = '/home'>
                 <Home></Home>
               </Route>
-            <Route path = '/home'>
-                <Home></Home>
-              </Route>
-            <Route path = '/addService'>
+            
+            <PrivateRoute path = '/addService'>
               <AddService></AddService>
-            </Route>
-            <Route path = '/details/:id'>
+            </PrivateRoute>
+            <PrivateRoute path = '/details/:id'>
                 <ServiceDetails></ServiceDetails>
-            </Route>
-            <Route path = '/register'>
+            </PrivateRoute>
+          {/*   <Route path = '/register'>
               <Register></Register>
-            </Route>
-            <Route path = '/myorders'>
+            </Route> */}
+          {  <Route path = '/login'>
+              <LogIn></LogIn>
+            </Route>}
+            <PrivateRoute path = '/myorders'>
               <MyOrders></MyOrders>
-            </Route>
-            <Route path = '/manageOrders'>
+            </PrivateRoute>
+            <PrivateRoute path = '/manageOrders'>
               <ManageOrder></ManageOrder>
-            </Route>
+            </PrivateRoute>
             
           </Switch>
               <Footer></Footer>
