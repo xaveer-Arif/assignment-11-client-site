@@ -15,7 +15,7 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://bloodcurdling-vault-35095.herokuapp.com/services')
         .then(res => res.json())
         .then(products => { 
             const service =  products.find(product => product._id === id)

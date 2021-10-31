@@ -11,11 +11,10 @@ const ManageOrder = () => {
     
     useEffect( () => {
         if(user.email){
-         fetch(`http://localhost:5000/manage/${user.email}`)
+         fetch(`https://bloodcurdling-vault-35095.herokuapp.com/manage/${user.email}`)
         .then(res => res.json())
         .then(data => {
             setServices(data)
-            // console.log(data)
         })
         }
       

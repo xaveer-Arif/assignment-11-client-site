@@ -7,11 +7,10 @@ import SingleOrder from '../SingleOrder/SingleOrder';
 const MyOrders = () => {
     const {user} = useFIrebase({})
     const [services, setServices] = useState([])
-    // console.log(user?.email)
     useEffect(() =>{
     if(user.email){
         console.log(user)
-     fetch(`http://localhost:5000/orders/${user.email}`)
+     fetch(`https://bloodcurdling-vault-35095.herokuapp.com/orders/${user.email}`)
         .then(res => res.json())
             .then(data => {
                 console.log(data)

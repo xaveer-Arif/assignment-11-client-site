@@ -1,10 +1,8 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-import Service from '../Service/Service';
 
 const SingleOrder = ({service}) => {
     const  {name, img, status} = service
-    // console.log(service)
     return (
         <div>
             {Array.from({ length: 1 }).map((_, idx) => (
