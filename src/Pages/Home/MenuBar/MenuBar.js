@@ -27,9 +27,9 @@ const MenuBar = () => {
          user.displayName && <Nav.Link>{user.displayName}</Nav.Link> 
       }
      
-      {
+     {/*  {
         user.displayName && <Nav.Link ><Image className = 'w-25' src={user?.reloadUserInfo?.photoUrl} alt="" roundedCircle  /></Nav.Link>
-      }
+      } */}
       
     </Nav>
     </Navbar.Collapse>
