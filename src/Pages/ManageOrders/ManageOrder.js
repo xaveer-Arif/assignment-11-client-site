@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
+import useAuth from '../../Hooks/useAuth';
 import useFIrebase from '../../Hooks/useFIrebase';
 import DisplayAllOrder from './DisplayAllOrder/DisplayAllOrder';
 
 const ManageOrder = () => {
-    const {user} = useFIrebase({})
+    const {user} = useAuth({})
     const [services, setServices] = useState([])
     
     

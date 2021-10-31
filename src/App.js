@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AuthProvider from './Context/AuthProvider';
 import AddService from './Pages/AddService/AddService';
 import Footer from './Pages/Home/Footer/Footer';
 import Home from './Pages/Home/Home/Home';
@@ -13,6 +14,7 @@ import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
         <Router>
         <MenuBar></MenuBar>
           <Switch>
@@ -44,6 +46,7 @@ function App() {
           </Switch>
               <Footer></Footer>
         </Router>
+        </AuthProvider>
     </div>
   );
 }
