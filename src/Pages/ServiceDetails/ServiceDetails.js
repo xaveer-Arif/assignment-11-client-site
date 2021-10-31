@@ -33,7 +33,7 @@ const ServiceDetails = () => {
         const newUser = {email}
             //    console.log(newUser)
             //    console.log(data)
-       
+       reset()
         fetch(`http://localhost:5000/update/${services._id}`, {
             method : "PUT", 
             headers:{
@@ -44,14 +44,7 @@ const ServiceDetails = () => {
         .then(res => res.json())
         .then(data => console.log(data))
         console.log(data)
-        /* axios.post('http://localhost:5000/services', data)
-        .then(res => {
-          if(res.data.insertedId){
-              reset()
-          }   
-          // console.log(res)
-        })
-        console.log(data) */
+       
       };
 /*     console.log(user)
     console.log(services) */

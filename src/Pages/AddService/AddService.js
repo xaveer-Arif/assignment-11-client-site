@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 const AddService = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data =>{ 
-      axios.post('https://bloodcurdling-vault-35095.herokuapp.com/services', data)
+      axios.post('http://localhost:5000/services', data)
+      /* axios.post('https://bloodcurdling-vault-35095.herokuapp.com/services', data) */
       .then(res => {
         if(res.data.insertedId){
           window.confirm('Are you sure to create a service')

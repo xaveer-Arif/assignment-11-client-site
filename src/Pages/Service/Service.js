@@ -8,7 +8,7 @@ const Service = ({service}) => {
     return (
         <div>
             {Array.from({ length: 1 }).map((_, idx) => (
-    <Col>
+    <Col className = ''>
       <Card>
         <Card.Img variant="top" src={img} />
         <Card.Body className = 'bg-danger text-white'>

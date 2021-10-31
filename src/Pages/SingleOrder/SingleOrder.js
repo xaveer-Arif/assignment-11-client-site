@@ -1,23 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Col } from 'react-bootstrap';
 
 const SingleOrder = ({service}) => {
-    const  {name, img, status} = service
+  const [users, setUsers] = useState([]);
+    // const  {name, _id, img, status} = service;
+    // console.log(_id)
+    setUsers(service)
+
+   /*  useEffect(() => {
+        // fetch('https://bloodcurdling-vault-35095.herokuapp.com/services')
+        fetch('http://localhost:5000/services')
+        .then(res => res.json())
+        .then(data => setUsers(data))
+    },[]) */
+
+    const deleteHandler = id => {
+      const url =  `http://localhost:5000//services/${id}`
+      fetch(url, {
+          method : 'DELETE'
+      })
+      .then(res => res.json())
+      .then(data => {
+          // console.log(data)
+          if(data.deletedCount > 0){
+              alert('data deleted')
+              const remainingUsers = users.filter(user => user._id !== id)
+              setUsers(remainingUsers)
+          }
+      })
+  }
     return (
         <div>
             {Array.from({ length: 1 }).map((_, idx) => (
     <Col>
       <Card>
-        <Card.Img variant="top" className = '' src={img} />
+        <Card.Img variant="top" className = '' src={users.img} />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title>{users.name}</Card.Title>
           <Card.Text>
             This is a longer card with supporting text below as a natural
             lead-in to additional content. This content is a little bit longer.
           </Card.Text>
-          <p>Status : <span className = 'text-primary '>{status}</span></p>
+          <p>Status : <span className = 'text-primary '>{users.status}</span></p>
         </Card.Body>
-        <button>Delete</button>
+        <button onClick = {() => deleteHandler(users._id)}>Delete</button>
       </Card>
     </Col>
   ))}
