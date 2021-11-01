@@ -11,12 +11,12 @@ const Service = ({service}) => {
      
       
       // console.log(id)
-      fetch('http://localhost:5000/services')
+      fetch('https://bloodcurdling-vault-35095.herokuapp.com/services')
       .then(res => res.json())
       .then(services => {
         
         const singleService = services.find(service => service._id === id)
-        axios.post('http://localhost:5000/serviceOrder', singleService)
+        axios.post('https://bloodcurdling-vault-35095.herokuapp.com/serviceOrder', singleService)
 
         // console.log(singleService);
         // setOrders(singleService)

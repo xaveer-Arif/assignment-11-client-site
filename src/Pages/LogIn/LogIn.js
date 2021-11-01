@@ -5,7 +5,6 @@ import useAuth from '../../Hooks/useAuth';
 
 const LogIn = () => {
     const {googleSignIn, user} = useAuth({})
-    console.log(user)
     const location = useLocation();
     const history = useHistory()
 

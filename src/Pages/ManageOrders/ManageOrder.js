@@ -3,40 +3,29 @@ import { Card, Col, Row } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
 
 
+
 const ManageOrder = () => {
     const {user} = useAuth({})
     const [services, setServices] = useState([])
     const update = 'accepted';
-    // const pending = 'pending'
-
-    
-    
     useEffect( () => {
         if(user.email){
-        /*  fetch(`https://bloodcurdling-vault-35095.herokuapp.com/manage/${user.email}`) */
-         fetch(`http://localhost:5000/manage/${user.email}`)
+         fetch(`https://bloodcurdling-vault-35095.herokuapp.com/serviceOrder`)
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             setServices(data)
         })
         }
       
     },[services])
-  /*   const deleteHandler = id => {
-        
-                const remainingUsers = services.filter(user => user._id !== id)
-                setServices(remainingUsers)
-         
-    } */
+  
     const deleteHandler = id => {
-        const url =  `http://localhost:5000/delete/${id}`
+        const url =  `https://bloodcurdling-vault-35095.herokuapp.com/delete/${id}`
         fetch(url, {
             method : 'DELETE'
         })
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             if(data.deletedCount > 0){
                 alert('data deleted')
                 const remainingUsers = services.filter(user => user._id !== id)
@@ -45,11 +34,9 @@ const ManageOrder = () => {
         })
     }
     // STATUS UPDATE
-    // let update = 'accepted';
      const  newUser = {status:update}; 
     const updateStatus = id => {
-        // console.log(id)
-        fetch(`http://localhost:5000/statusUpdate/${id}`, {
+        fetch(`https://bloodcurdling-vault-35095.herokuapp.com/statusUpdate/${id}`, {
             method: "PUT",
             headers : {
                 "content-type": "application/json"
@@ -62,15 +49,15 @@ const ManageOrder = () => {
     }
     return (
         <div>
-            <h1>manage orders : {services.length}</h1>
+            <h1 className = 'm-3 fw-bold'>Manage Orders</h1>
+            <div className = 'm-3'>
             <Row xs={1} md={4} className="g-4">
             {
                services.map((service, index) => 
-                // {Array.from({ length: 1 }).map((_, idx) => (
                     <Col>
                       <Card>
                         <Card.Img variant="top" className = '' src={service.img} />
-                        <Card.Body>
+                        <Card.Body className = 'colors'>
                           <Card.Title>{service.name}</Card.Title>
                           <Card.Text>
                             This is a longer card with supporting text below as a natural
@@ -84,11 +71,10 @@ const ManageOrder = () => {
 
                       <button   onClick = {() => updateStatus(service._id)} className = 'btn btn-primary w-50'>Accept Order</button>
                     </Col>
-                //   ))}
                )  
             }
             </Row>
-            
+            </div>
         </div>
     );
 };

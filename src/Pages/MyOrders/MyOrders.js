@@ -1,36 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
-import useFIrebase from '../../Hooks/useFIrebase';
-import Service from '../Service/Service';
-import SingleOrder from '../SingleOrder/SingleOrder';
+
 
 const MyOrders = () => {
     const {user} = useAuth({})
     const [services, setServices] = useState([])
     useEffect(() =>{
     if(user.email){
-        console.log(user)
-    //  fetch(`https://bloodcurdling-vault-35095.herokuapp.com/orders/${user.email}`)
-     fetch(`http://localhost:5000/serviceOrder/${user.email}`)
+     fetch(`https://bloodcurdling-vault-35095.herokuapp.com/serviceOrder/${user.email}`)
         .then(res => res.json())
             .then(data => {
                 console.log(data)
                 const order = data.filter(service => service.email === user.email)
                  setServices(order)
-                //  console.log(order)
             })
     }
     },[user])
     // delete handler
     const deleteHandler = id => {
-        const url =  `http://localhost:5000/delete/${id}`
+        const url =  `https://bloodcurdling-vault-35095.herokuapp.com/delete/${id}`
         fetch(url, {
             method : 'DELETE'
         })
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             if(data.deletedCount > 0){
                 alert('data deleted')
                 const remainingUsers = services.filter(user => user._id !== id)
@@ -38,17 +32,12 @@ const MyOrders = () => {
             }
         })
     }
-    /* const deleteHandler = id => {
-        const remainingUsers = services.filter(user => user._id !== id)
-        setServices(remainingUsers)
-    } */
-
     return (
         <div>
-            <Row xs={1} md={4} className="g-4">
+          <h1>Your Orders</h1>
+            <Row xs={1} md={4} className="g-4 m-3">
             {
                services.map((service, index) => 
-                // {Array.from({ length: 1 }).map((_, idx) => (
                     <Col>
                       <Card>
                         <Card.Img variant="top" className = '' src={service.img} />
@@ -63,7 +52,7 @@ const MyOrders = () => {
                         <button className = 'btn btn-danger' onClick = {() => deleteHandler(service._id)}>Delete</button>
                       </Card>
                     </Col>
-                //   ))}
+                
                )  
             }
             </Row>

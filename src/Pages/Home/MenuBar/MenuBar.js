@@ -29,7 +29,7 @@ const MenuBar = () => {
       }
       
       {
-        user.email?<Nav.Link as = {Link} onClick = {logOut} to="/logout">Log Out</Nav.Link>: <Nav.Link as = {Link} to="/login">Log In</Nav.Link>
+        user.email?<Nav.Link as = {Link} onClick = {logOut} to="/login">Log Out</Nav.Link>: <Nav.Link as = {Link} to="/login">Log In</Nav.Link>
       }
       {
          user.displayName && <Nav.Link>{user.displayName}</Nav.Link> 

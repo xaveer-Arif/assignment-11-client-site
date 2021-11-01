@@ -3,19 +3,11 @@ import { Card, Col } from 'react-bootstrap';
 
 const SingleOrder = ({service}) => {
   const [users, setUsers] = useState([]);
-    // const  {name, _id, img, status} = service;
-    // console.log(_id)
     setUsers(service)
 
-   /*  useEffect(() => {
-        // fetch('https://bloodcurdling-vault-35095.herokuapp.com/services')
-        fetch('http://localhost:5000/services')
-        .then(res => res.json())
-        .then(data => setUsers(data))
-    },[]) */
 
     const deleteHandler = id => {
-      const url =  `http://localhost:5000//services/${id}`
+      const url =  `https://bloodcurdling-vault-35095.herokuapp.com/services/${id}`
       fetch(url, {
           method : 'DELETE'
       })

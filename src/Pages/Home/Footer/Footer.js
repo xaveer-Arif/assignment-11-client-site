@@ -10,7 +10,7 @@ const Footer = () => {
             <Row className = 'pt-5'>
                 
                 <Col xm = {2} md = {3} className = ' ms-5 text-start ' >
-                     {/* <img className = 'mb-3 footer-logo img-fluid' src={logo} alt="" /> */}
+                    
                     <h5 className ='mb-3'>About</h5>
                     <p>A Powerful & Beautiful Multi-Purpose WordPress theme with tons of advanced features.</p>
                     

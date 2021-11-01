@@ -18,18 +18,25 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/serviceOrder')
+        fetch('https://bloodcurdling-vault-35095.herokuapp.com/services')
         .then(res => res.json())
         .then(products => { 
-            
-            const service =  products.find(product => product._id === id)
+            if(products){
+                console.log(products)
+            const service =  products.find(product => product._id?.includes(id))
             // console.log(service)
             setServices(service)
-             
+            }
+            
+            
             
             
         })
     },[services])
+   /*  if(services){
+            window.location.reload()
+
+    } */
     // form submition
         let update = "pending"
         const formHandler = data =>{ 
@@ -38,7 +45,7 @@ const ServiceDetails = () => {
             const email = emailRef.current.value;
             const newUser = {email, status: update}
         reset()
-            fetch(`http://localhost:5000/update/${services._id}`, {
+            fetch(`https://bloodcurdling-vault-35095.herokuapp.com/update/${services._id}`, {
                 method : "PUT", 
                 headers:{
                     "content-type": "application/json"
@@ -51,10 +58,12 @@ const ServiceDetails = () => {
             }
         
         };
+
 /*     console.log(user)
     console.log(services) */
     return (
         <div>
+            
             <h1>product {services?.name}</h1>
             <Row>
                 <Col >
@@ -65,10 +74,13 @@ const ServiceDetails = () => {
           <Card.Text>
             {services?.discription}
           </Card.Text>
+          <Card.Text>
+            {services?.details}
+          </Card.Text>
           {/* <p>Status : <span className = 'text-primary '>{status}</span></p> */}
           
         </Card.Body>
-        <button>Delete</button>
+        <button className = 'btn btn-primary'>Details</button>
       </Card>
                 </Col>
 
