@@ -17,48 +17,54 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        fetch('https://bloodcurdling-vault-35095.herokuapp.com/services')
+        fetch('http://localhost:5000/serviceOrder')
         .then(res => res.json())
         .then(products => { 
+            
             const service =  products.find(product => product._id === id)
             // console.log(service)
             setServices(service)
              
+            
+            
         })
-    },[])
+    },[services])
     // form submition
-    const formHandler = data =>{ 
-        data.preventDefault()
-        const email = emailRef.current.value;
-        const newUser = {email}
-            //    console.log(newUser)
-            //    console.log(data)
-       reset()
-        fetch(`http://localhost:5000/update/${services._id}`, {
-            method : "PUT", 
-            headers:{
-                "content-type": "application/json"
-            }, 
-            body:JSON.stringify(newUser)
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        console.log(data)
-       
-      };
+   
+        const formHandler = data =>{ 
+            if(services){
+                data.preventDefault()
+            const email = emailRef.current.value;
+            const newUser = {email}
+                //    console.log(newUser)
+                //    console.log(data)
+        reset()
+            fetch(`http://localhost:5000/update/${services._id}`, {
+                method : "PUT", 
+                headers:{
+                    "content-type": "application/json"
+                }, 
+                body:JSON.stringify(newUser)
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            console.log(data)
+            }
+        
+        };
 /*     console.log(user)
     console.log(services) */
     return (
         <div>
-            <h1>product {services.name}</h1>
+            <h1>product {services?.name}</h1>
             <Row>
                 <Col >
                 <Card>
-        <Card.Img variant="top" className = '' src={services.img} />
+        <Card.Img variant="top" className = '' src={services?.img} />
         <Card.Body>
-          <Card.Title>{services.name}</Card.Title>
+          <Card.Title>{services?.name}</Card.Title>
           <Card.Text>
-            {services.discription}
+            {services?.discription}
           </Card.Text>
           {/* <p>Status : <span className = 'text-primary '>{status}</span></p> */}
           
@@ -69,9 +75,9 @@ const ServiceDetails = () => {
 
                 <Col>
                 <form onSubmit = {formHandler} className = 'mt-4'>
-        <input  className = 'm-1 mb-2' defaultValue= {services.name}/>
+        <input  className = 'm-1 mb-2' defaultValue= {services?.name}/>
         <br />
-        <input  className = 'm-1 mb-2' defaultValue= {services.price}/>
+        <input  className = 'm-1 mb-2' defaultValue= {services?.price}/>
         <br />
 
         <input  className = 'm-1 mb-2' defaultValue= {user?.displayName} />

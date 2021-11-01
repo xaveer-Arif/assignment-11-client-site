@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
-import useFIrebase from '../../Hooks/useFIrebase';
-import DisplayAllOrder from './DisplayAllOrder/DisplayAllOrder';
+
 
 const ManageOrder = () => {
     const {user} = useAuth({})
@@ -15,19 +14,20 @@ const ManageOrder = () => {
          fetch(`http://localhost:5000/manage/${user.email}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             setServices(data)
         })
         }
       
     },[user])
-    const deleteHandler = id => {
+  /*   const deleteHandler = id => {
         
                 const remainingUsers = services.filter(user => user._id !== id)
                 setServices(remainingUsers)
          
-    }
-   /*  const deleteHandler = id => {
-        const url =  `http://localhost:5000/services/${id}`
+    } */
+    const deleteHandler = id => {
+        const url =  `http://localhost:5000/delete/${id}`
         fetch(url, {
             method : 'DELETE'
         })
@@ -40,7 +40,7 @@ const ManageOrder = () => {
                 setServices(remainingUsers)
             }
         })
-    } */
+    }
     return (
         <div>
             <h1>manage orders : {services.length}</h1>

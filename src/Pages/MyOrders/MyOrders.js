@@ -12,7 +12,7 @@ const MyOrders = () => {
     if(user.email){
         console.log(user)
     //  fetch(`https://bloodcurdling-vault-35095.herokuapp.com/orders/${user.email}`)
-     fetch(`http://localhost:5000/orders/${user.email}`)
+     fetch(`http://localhost:5000/serviceOrder/${user.email}`)
         .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -23,7 +23,7 @@ const MyOrders = () => {
     }
     },[user])
     // delete handler
-   /*  const deleteHandler = id => {
+    const deleteHandler = id => {
         const url =  `http://localhost:5000/delete/${id}`
         fetch(url, {
             method : 'DELETE'
@@ -37,11 +37,11 @@ const MyOrders = () => {
                 setServices(remainingUsers)
             }
         })
-    } */
-    const deleteHandler = id => {
+    }
+    /* const deleteHandler = id => {
         const remainingUsers = services.filter(user => user._id !== id)
         setServices(remainingUsers)
-    }
+    } */
 
     return (
         <div>
