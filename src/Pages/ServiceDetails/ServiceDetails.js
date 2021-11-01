@@ -22,7 +22,7 @@ const ServiceDetails = () => {
         .then(res => res.json())
         .then(products => { 
             if(products){
-                console.log(products)
+                // console.log(products)
             const service =  products.find(product => product._id?.includes(id))
             // console.log(service)
             setServices(service)
