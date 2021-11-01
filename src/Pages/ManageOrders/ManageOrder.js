@@ -6,6 +6,9 @@ import useAuth from '../../Hooks/useAuth';
 const ManageOrder = () => {
     const {user} = useAuth({})
     const [services, setServices] = useState([])
+    const update = 'accepted';
+    // const pending = 'pending'
+
     
     
     useEffect( () => {
@@ -14,12 +17,12 @@ const ManageOrder = () => {
          fetch(`http://localhost:5000/manage/${user.email}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setServices(data)
         })
         }
       
-    },[user])
+    },[services])
   /*   const deleteHandler = id => {
         
                 const remainingUsers = services.filter(user => user._id !== id)
@@ -41,6 +44,22 @@ const ManageOrder = () => {
             }
         })
     }
+    // STATUS UPDATE
+    // let update = 'accepted';
+     const  newUser = {status:update}; 
+    const updateStatus = id => {
+        // console.log(id)
+        fetch(`http://localhost:5000/statusUpdate/${id}`, {
+            method: "PUT",
+            headers : {
+                "content-type": "application/json"
+            },
+            body:JSON.stringify(newUser)
+
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
     return (
         <div>
             <h1>manage orders : {services.length}</h1>
@@ -60,8 +79,10 @@ const ManageOrder = () => {
                           <p>Status : <span className = 'text-primary '>{service.status}</span></p>
                           <p>email :<span className = 'text-primary '>{service.email}</span> </p>
                         </Card.Body>
-                        <button className = 'btn btn-danger' onClick = {() => deleteHandler(service._id)}>Delete</button>
                       </Card>
+                      <button className = 'btn btn-danger w-50' onClick = {() => deleteHandler(service._id)}>Delete</button>
+
+                      <button   onClick = {() => updateStatus(service._id)} className = 'btn btn-primary w-50'>Accept Order</button>
                     </Col>
                 //   ))}
                )  

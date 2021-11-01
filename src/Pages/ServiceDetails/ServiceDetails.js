@@ -30,14 +30,12 @@ const ServiceDetails = () => {
         })
     },[services])
     // form submition
-   
+        let update = "pending"
         const formHandler = data =>{ 
             if(services){
                 data.preventDefault()
             const email = emailRef.current.value;
-            const newUser = {email}
-                //    console.log(newUser)
-                //    console.log(data)
+            const newUser = {email, status: update}
         reset()
             fetch(`http://localhost:5000/update/${services._id}`, {
                 method : "PUT", 
