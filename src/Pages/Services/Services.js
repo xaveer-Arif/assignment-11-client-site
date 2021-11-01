@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Row, Spinner } from 'react-bootstrap';
 import Service from '../Service/Service';
 
 const Services = () => {
@@ -14,15 +14,22 @@ const Services = () => {
     return (
         <div className = 'mt-5 mb-5'>
             <h1 className = 'mb-5'>Services</h1>
-            <Row xs={1} md={3} className="g-1">
             {
-                services.map(service => <Service
-                key = {service._id}
-                service = {service}
-                ></Service>)
-            
+                 
+                    services.length === 0 ? <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner> : 
+                  <Row xs={1} md={3} className="g-1">
+                  {
+                      services.map(service => <Service
+                      key = {service._id}
+                      service = {service}
+                      ></Service>)
+                  
+                  }
+                  </Row>
             }
-            </Row>
+            
         </div>
     );
 };

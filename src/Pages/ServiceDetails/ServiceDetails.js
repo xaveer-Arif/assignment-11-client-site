@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import useFIrebase from '../../Hooks/useFIrebase';
 
@@ -94,6 +95,7 @@ const ServiceDetails = () => {
         {errors.exampleRequired && <span>This field is required</span>}
                     <br />
                 <input className = 'm-2' type="submit" />
+                
         </form>
                 </Col>
             </Row>

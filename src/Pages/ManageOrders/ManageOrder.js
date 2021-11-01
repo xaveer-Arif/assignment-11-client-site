@@ -77,7 +77,7 @@ const ManageOrder = () => {
                             lead-in to additional content. This content is a little bit longer.
                           </Card.Text>
                           <p>Status : <span className = 'text-primary '>{service.status}</span></p>
-                          <p>email :<span className = 'text-primary '>{service.email}</span> </p>
+                          <p> email :<span className = 'text-danger '>{service.email}</span> </p>
                         </Card.Body>
                       </Card>
                       <button className = 'btn btn-danger w-50' onClick = {() => deleteHandler(service._id)}>Delete</button>
